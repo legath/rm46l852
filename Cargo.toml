@@ -1,8 +1,8 @@
 [package]
-name = "tms570ls3137"
+name = "rm46l852"
 version = "0.1.0"
-authors = ["Paolo Teti <paolo.teti@gmail.com>"]
-description = "Example project for TI Cortex-R4F/R5F TMS570LS3137"
+authors = ["Paolo Teti <paolo.teti@gmail.com>", "Alexander Bulychev <a.f.bulychev@gmail.com>"]
+description = "Example project for TI Cortex-R4F/R5F RM46L852"
 build = "build.rs"
 
 [profile.dev]
@@ -28,5 +28,5 @@ panic_impl = { path = "crates/panic_impl" }
 
 [dependencies.linked_list_allocator]
 default-features = true
-version = "0.6.3"
+version = "0.9.1"
 

@@ -1,18 +1,18 @@
-[![Build Status](https://travis-ci.org/paoloteti/tms570ls3137.svg?branch=master)](https://travis-ci.org/paoloteti/tms570ls3137)
 
-# TMS570LS3137 BSP Example
+# RM46l852 BSP Example
 
-Example on how to use the TMS570 BSP crate.
+Example on how to use the TMS570 BSP crate with launchxl2-rm46 board.
 
 ## Getting started
 
 * Rust nightly as default toolchain
-  * Latest tested: `rustc 1.30.0-nightly (4141a4079 2018-09-25)`
-* Add an armebv7r target:
-  * Hard-float: `rustup target add armebv7r-none-eabihf`
-  * Soft-float: `rustup target add armebv7r-none-eabi`
-* GCC v7.3.2 for ARM: `sudo apt-get install gcc-arm-none-eabi`
-* JTAG programmer: Lautherbach Trace32 Powerview for ARM or OpenOCD
+  * Latest tested: `1.58.0-nightly (0d1754e8b 2021-11-05)`
+* Add an armv7r target (Note that TMS570 have big endian architect , but RM4X family is little endian):
+  * Hard-float: `rustup target add armv7r-none-eabihf`
+  * Soft-float: `rustup target add armv7r-none-eabi`
+* GCC for ARM
+  * latest tested : `gcc version 11.2.0 (Arch Repository)`
+* JTAG programmer: Lautherbach Trace32 Powerview for ARM or OpenOCD or JLinkGDBServer
 
 ## Build
 

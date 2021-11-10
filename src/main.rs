@@ -48,12 +48,12 @@ fn main() {
         .set_baudrate(115_200);
     uart.open();
 
-    ioport.direction(GioPorts::A, 7, GioDirection::Input);
+    ioport.direction(GioPorts::B, 2, GioDirection::Input);
 
     let mut v = Vec::new();
     let mut click = 0;
     loop {
-        let button = ioport.get(GioPorts::A, 7);
+        let button = ioport.get(GioPorts::B, 2);
         if button {
             v.push(click);
             if v.pop().unwrap() == click {
