@@ -2,10 +2,7 @@ language: rust
 
 matrix:
   include:
-    - env: TARGET=armebv7r-none-eabihf
-      rust: nightly
-
-    - env: TARGET=armebv7r-none-eabi
+    - env: TARGET=armv7r-none-eabihf
       rust: nightly
 
 before_install: set -e
