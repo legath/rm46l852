@@ -26,6 +26,7 @@ jobs:
            toolchain: nightly
            override: true
            components: rustfmt
+           target: armv7r-none-eabihf
     - name: Run cargo build
       uses: actions-rs/cargo@v1
       with:
