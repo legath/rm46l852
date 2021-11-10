@@ -1,4 +1,4 @@
-
+[![CI](https://github.com/legath/rm46l852/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/legath/rm46l852/actions/workflows/ci.yml)
 # RM46l852 BSP Example
 
 Example on how to use the TMS570 BSP crate with launchxl2-rm46 board.
