@@ -1,4 +1,4 @@
-
+#[allow(improper_ctypes_definitions)]
 /// Lang item required to make the normal `main` work in applications
 /// Called by TMS570 crate
 #[lang = "start"]
