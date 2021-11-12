@@ -8,9 +8,10 @@ extern crate panic_impl;
 extern crate tms570;
 extern crate alloc;
 extern crate linked_list_allocator;
+
 use tms570::serial::{SerialLine, Parity, StopBits, DataBits, Lines};
 use tms570::scilin::SciChipset;
-use tms570::gio::{Gio, GioPorts, GioDirection};
+use tms570::gio::{Gio, GioPorts, GioDirection, Pull};
 use tms570::iomm::Iomm;
 use tms570::pinmux::PinMux;
 use linked_list_allocator::LockedHeap;
@@ -40,28 +41,22 @@ fn main() {
     heap_init();
 
     let ioport = Gio::new();
-    let mut uart:SciChipset = SerialLine::new(Lines::Sci, DataBits::Eight,
-                                              StopBits::One,
-                                              Parity::None);
+    let mut uart: SciChipset = SerialLine::new(Lines::Sci, DataBits::Eight,
+                                               StopBits::One,
+                                               Parity::None);
     uart.rx_enable(true)
         .tx_enable(true)
         .set_baudrate(115_200);
     uart.open();
 
-    ioport.direction(GioPorts::B, 2, GioDirection::Input);
+    ioport.direction(GioPorts::MibSpiPort3, 0, GioDirection::Input);
+    ioport.direction(GioPorts::B, 1, GioDirection::Output);
 
-    let mut v = Vec::new();
-    let mut click = 0;
+
     loop {
-        let button = ioport.get(GioPorts::B, 2);
-        if button {
-            v.push(click);
-            if v.pop().unwrap() == click {
-                click += 1;
-                uart.write(b"Alloc Test done\n");
-            } else {
-                uart.write(b"Alloc Test fail\n");
-            }
+        let button = ioport.get(GioPorts::MibSpiPort3, 0);
+        if !button {
+            ioport.toogle(GioPorts::B, 1);
         }
     }
 }
